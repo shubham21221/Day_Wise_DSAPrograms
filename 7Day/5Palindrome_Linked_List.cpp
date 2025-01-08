@@ -75,5 +75,4 @@ int main(){
     cout <<"Input Linked List: ";
     print(head2);
     cout<<" Is palindrome? "<<(isPalindrome(head2) ? " yes": "No")<<endl;
-
 }
