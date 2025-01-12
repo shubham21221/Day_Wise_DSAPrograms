@@ -19,30 +19,28 @@ ListNode* reverseList(ListNode* head){
     }
     return prev;
 }
+bool checkpalindrome(vector<int> &list){
+    int first =0;
+    int last = list.size()-1;
+    while(first<=last){
+        if(list[first]!=list[last]){
+            return 0;
+        }
+        first++;
+        last--;
+    }
+    return 1;
+}
 
 bool isPalindrome(ListNode* head){
     if(!head || !head->next) return true;
-    //step 1 find the middle using slow and fast pointers
-    ListNode* slow = head;
-    ListNode*  fast = head;
-    while(fast&& fast->next){
-        slow = slow->next;
-        fast = fast->next->next;
+    vector<int> list;
+    ListNode* temp = head;
+    while(temp != NULL){
+        list.push_back(temp->val);
+        temp =temp->next;
     }
-    //step 2 reverse the second half of the list
-    ListNode* secondHalf = reverseList(slow);
-    //compare the first and second halves
-    ListNode* firstHalf = head;
-    ListNode* temp = secondHalf ;
-    while(secondHalf){
-        if(firstHalf->val != secondHalf->val){
-            return false;
-        }
-        firstHalf = firstHalf->next;
-        secondHalf = secondHalf->next;
-    }
-    reverseList(temp);
-    return true;
+    return checkpalindrome(list);
 }
 
 ListNode* createLinkdedList(const vector<int>& value){
@@ -64,13 +62,13 @@ void print(ListNode* head){
 }
 
 int main(){
-    vector<int> values1 = {1,2,2,1};
+    vector<int> values1 = {1,2,3,2,4,1};
     ListNode* head1 = createLinkdedList(values1);
     cout<<"Input Linkedlist List: ";
     print(head1);
     cout<<"is palindrome? " <<(isPalindrome(head1)? "yes": "NO")<<endl;
 
-    vector<int> values2={1,2,3};
+    vector<int> values2={1,2,1};
     ListNode* head2 = createLinkdedList(values2);
 
     cout <<"Input Linked List: ";
