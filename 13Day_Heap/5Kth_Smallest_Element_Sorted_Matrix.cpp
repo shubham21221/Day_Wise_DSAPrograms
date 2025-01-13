@@ -1,6 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k) {
+         int n = matrix.size();
+        int m = matrix[0].size();
+        priority_queue<int> pq;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                pq.push(matrix[i][j]);
+                if(pq.size()>k){
+                    pq.pop();
+                }
+            }
+        }
+        return pq.top();
+    }
+    
+};
+
 // class Solution {
 // public:
 //     int kthSmallest(vector<vector<int>>& matrix, int k) {
@@ -71,37 +90,52 @@ using namespace std;
 //     return 0;
 // }
 
-class Solution {
-public:
-    int kthSmallest(vector<vector<int>>& matrix, int k) {
-        int n = matrix.size();
-        using Element = tuple<int, int, int>; // Tuple to store (value, row, col)
-        priority_queue<Element, vector<Element>, greater<Element>> pq;
+// class Solution {
+// public:
+//     int kthSmallest(vector<vector<int>>& matrix, int k) {
+        // int n = matrix.size();
+    //     using Element = tuple<int, int, int>; // Tuple to store (value, row, col)
+    //     priority_queue<Element, vector<Element>, greater<Element>> pq;
 
-        // Push the first element of each row into the heap
-        for (int i = 0; i < n; i++) {
-            pq.emplace(matrix[i][0], i, 0);
-        }
+    //     // Push the first element of each row into the heap
+    //     for (int i = 0; i < n; i++) {
+    //         pq.emplace(matrix[i][0], i, 0);
+    //     }
 
-        // Extract min k times
-        for (int i = 0; i < k - 1; i++) {
-            Element top = pq.top();
-            pq.pop();
+    //     // Extract min k times
+    //     for (int i = 0; i < k - 1; i++) {
+    //         Element top = pq.top();
+    //         pq.pop();
 
-            int val = get<0>(top);
-            int row = get<1>(top);
-            int col = get<2>(top);
+    //         int val = get<0>(top);
+    //         int row = get<1>(top);
+    //         int col = get<2>(top);
 
-            // Push the next element in the same row into the heap
-            if (col + 1 < n) {
-                pq.emplace(matrix[row][col + 1], row, col + 1);
-            }
-        }
+    //         // Push the next element in the same row into the heap
+    //         if (col + 1 < n) {
+    //             pq.emplace(matrix[row][col + 1], row, col + 1);
+    //         }
+    //     }
 
-        // Return the k-th smallest element
-        return get<0>(pq.top());
-    }
-};
+    //     // Return the k-th smallest element
+    //     return get<0>(pq.top());
+
+    // using min heap better an simple apporoch
+//     int n = matrix.size();
+//         int m = matrix[0].size();
+//         priority_queue<int> pq;
+//         for(int i=0;i<n;i++){
+//             for(int j=0;j<m;j++){
+//                 pq.push(matrix[i][j]);
+//                 if(pq.size()>k){
+//                     pq.pop();
+//                 }
+//             }
+//         }
+//         return pq.top();
+//     }
+    
+// };
 
 int main() {
     Solution sol;
