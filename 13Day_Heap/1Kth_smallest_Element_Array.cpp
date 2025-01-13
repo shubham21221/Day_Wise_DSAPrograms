@@ -31,7 +31,7 @@ public:
 // };
 
 int main(){
-    vector<int> nums = {1,2,3,4,5};
+    vector<int> nums = {1,2,3,4,5,6,7,8};
     int k = 3;
     //create object using the class
     Solution ob;
