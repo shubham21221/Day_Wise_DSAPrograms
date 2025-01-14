@@ -18,7 +18,10 @@ public:
             char currentChar = pq.top().second;
             pq.pop();
             while(count--){
-                ans += string(1,currentChar);
+                ans += currentChar;
+                // it is alternative method to create newly in c++
+                // ans += string(1,currentChar);
+
             }
         }
             return ans;
