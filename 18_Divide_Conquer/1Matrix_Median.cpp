@@ -27,8 +27,6 @@ int countLessEqual(vector<vector<int>>& matrix, int mid) {
     }
     return count;
 }
-
-// Function to find the median of the matrix
 int findMedian(vector<vector<int>>& matrix) {
     int r = matrix.size(), c = matrix[0].size();
     int low = INT_MAX, high = INT_MIN;
