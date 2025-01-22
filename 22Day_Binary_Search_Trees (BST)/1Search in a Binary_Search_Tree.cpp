@@ -12,5 +12,6 @@ class Solution{
         }else{
             return SearchBST(root->right, val);
         }
+
     }
 };
