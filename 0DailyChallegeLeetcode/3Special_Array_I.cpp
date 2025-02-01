@@ -1,13 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
 
 
 class Solution {
 public:
     bool isArraySpecial(vector<int>& nums) {
         for(int i=1;i<nums.size();i++){
-            if(!=nums[i]^nums[i-1] & 1))
-            // if(nums[i] % 2 == nums[i + 1] % 2)
+            // if(!((nums[i]^nums[i-1]) & 1))
+            if(nums[i] % 2 == nums[i + 1] % 2)
             return false;
         }
         return true;
     }
 };
+
+int main(){
+    Solution obj;
+    vector<int> nums = {2,1,4};
+    int ans = obj.isArraySpecial(nums);
+    if(ans == 1){
+        cout<<"True";
+    }else {
+        cout<<"False";
+    }
+    
+}
