@@ -10,8 +10,7 @@ public:
         for(int i=1;i<n;i++){
             if( nums[i]>nums[i-1]){
                 sum += nums[i];
-
-            }else{
+            }else if(nums[i]<nums[i-1]){
                 sum = nums[i];
             }
         maxi = max(maxi,sum);
